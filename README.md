@@ -47,3 +47,14 @@ charts (folder) | A directory containing other charts (subcharts).
 * The "Chart.yaml" file contains a description of the chart. You can acces it from within a template. The "charts/" directory may contain other charts (which we call subcharts).
 
 **Note**: To quickly set up a chart, we can move our existing yamls files into the "templates" folder.
+
+### Helm best practices
+
+* In general, **templates should not define a namespace**. This is because Helm installs objects into the namespaces provided with the --namespace flag. By omitting this information, it also provides templates with some flexibility for post-render operations (like helm template | kubectl create --namespace foo -f -). You can use the "{{ .Release.namespace }}" in your manifests files and that will get populated when you do helm install with "--namespace" flag.
+  * helm install <name> --namespace dev-vault --create-namespace .
+
+### Helm Chart commands (common)
+
+Command | Description
+--------| -----------
+helm install dev-vault --namespace vault --create-namespace . | Installing chart from the current directory (not from a repository)
