@@ -1,0 +1,20 @@
+# 
+# Currently only works on at root domain "/", not path based like "/vault"
+#
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-vault-ingress
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"    
+    nginx.ingress.kubernetes.io/rewrite-target: "/"
+spec:
+  rules:
+  - host: vault.eks-demo-cluster.clusters.shastra.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ .Release.Name }}-vault
+          servicePort: 8200
