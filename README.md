@@ -63,3 +63,5 @@ helm install dev-vault --namespace vault --create-namespace . | Installing chart
 helm install dev-vault --namespace vault --create-namespace --dry-run . | Dry-run without installing chart from the current directory (not from a repository)
 helm uninstall dev-vault --namespace vault | Delete Chart from namespace
 helm template dev-vault vault | Render chart templates locally and displays output
+---|---
+helm search repo gatekeeper | Search for stable release versions matching the keyword gatekeeper
