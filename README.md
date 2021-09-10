@@ -57,11 +57,15 @@ charts (folder) | A directory containing other charts (subcharts).
 
 Command | Description
 --------| -----------
+helm search repo gatekeeper | Search for stable release versions matching the keyword gatekeeper
+helm search repo minio --versions | List all available versions
+helm repo add minio https://operator.min.io/ | Add repository
+helm repo remove minion | Remove repository
+helm repo update | Update repository
+---|---
 helm list </br> helm ls </br> helm ls -A | List Charts, (-A) means across all namespaces
 helm create dev-vault | Create a Chart scafold to use as baseline (has exmaples)
 helm install dev-vault --namespace vault --create-namespace . | Installing chart from the current directory (not from a repository)
 helm install dev-vault --namespace vault --create-namespace --dry-run . | Dry-run without installing chart from the current directory (not from a repository)
 helm uninstall dev-vault --namespace vault | Delete Chart from namespace
 helm template dev-vault vault | Render chart templates locally and displays output
----|---
-helm search repo gatekeeper | Search for stable release versions matching the keyword gatekeeper
