@@ -69,3 +69,7 @@ helm install dev-vault --namespace vault --create-namespace . | Installing chart
 helm install dev-vault --namespace vault --create-namespace --dry-run . | Dry-run without installing chart from the current directory (not from a repository)
 helm uninstall dev-vault --namespace vault | Delete Chart from namespace
 helm template dev-vault vault | Render chart templates locally and displays output
+helm rollback jenkins-dev 1 (version number, can get from helm history)
+helm package charts/jenkins-dev | Package an helm chart (creates a .tgz file)
+---|---
+helm history jenkins-dev | Look at the history of deployments
