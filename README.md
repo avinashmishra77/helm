@@ -18,6 +18,36 @@ chmod +x /usr/local/bin/helm
 helm version
 ```
 
+## Upgrading Helm
+
+Check the compability matrix between the Helm and the kubernetes version before upgrading. 
+
+```bash
+# v3.8.2 [with k8 version 1.21.x]
+curl -LO https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz
+tar -C /tmp/ -zxvf helm-v3.8.2-linux-amd64.tar.gz
+rm -rf helm-v3.8.2-linux-amd64.tar.gz
+
+# Rename previous version of helm 
+sudo mv /usr/local/bin/helm /usr/local/bin/helm-v3.6.2
+sudo mv /tmp/linux-amd64/helm /usr/local/bin/helm-v3.8.2
+
+# Create softlink to new version
+sudo ln -sf /usr/local/bin/helm-v3.8.2 /usr/local/bin/helm
+
+
+# v3.9.4
+curl -LO https://get.helm.sh/helm-v3.9.4-linux-amd64.tar.gz
+tar -C /tmp/ -zxvf helm-v3.9.4-linux-amd64.tar.gz
+rm -rf helm-v3.9.4-linux-amd64.tar.gz
+
+# Rename previous version of helm 
+sudo mv /tmp/linux-amd64/helm /usr/local/bin/helm-v3.9.4
+
+# Create softlink to new version
+sudo ln -sf /usr/local/bin/helm-v3.9.4 /usr/local/bin/helm
+```
+
 ## A Starter Chart
 
 This creates a shell chart structure that we can modify to suit our needs. Helm installs a default application to use as an example.
